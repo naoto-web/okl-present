@@ -157,47 +157,13 @@ input:focus, select:focus, textarea:focus {
 .choice .label { font-weight: 700; }
 .choice .sub { font-size: 13px; color: var(--ink-sub); font-weight: 400; }
 
-/* 同意チェックの直前に出す要点ボックス */
-.consent {
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: #fbfcfd;
-  padding: 14px;
-  margin-bottom: 14px;
+/* 同意チェックの下に出す注意書き */
+.consent-note {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink-sub);
+  margin: 10px 2px 0;
 }
-.consent .cs-title {
-  font-weight: 700;
-  font-size: 14px;
-  margin: 0 0 10px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--line);
-}
-.consent dl { margin: 0 0 10px; }
-.consent dl div {
-  display: flex;
-  gap: 10px;
-  padding: 8px 0;
-  border-bottom: 1px dashed var(--line);
-}
-.consent dl div:last-child { border-bottom: none; }
-.consent dt {
-  flex: 0 0 46px;
-  font-size: 12px;
-  font-weight: 700;
-  color: #fff;
-  background: var(--ink-sub);
-  border-radius: 4px;
-  height: 22px;
-  line-height: 22px;
-  text-align: center;
-}
-.consent dd {
-  margin: 0;
-  flex: 1;
-  font-size: 14px;
-  line-height: 1.6;
-}
-.consent > p:last-child { margin: 0; }
 
 .agree {
   display: flex;
