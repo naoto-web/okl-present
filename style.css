@@ -157,12 +157,16 @@ input:focus, select:focus, textarea:focus {
 .choice .label { font-weight: 700; }
 .choice .sub { font-size: 13px; color: var(--ink-sub); font-weight: 400; }
 
-/* 同意チェックの下に出す注意書き */
+/* 同意チェックの下に出す注意書き。上のチェック欄と同じ見た目にそろえる */
 .consent-note {
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--ink-sub);
-  margin: 10px 2px 0;
+  padding: 14px;
+  background: #fff8e6;
+  border: 1px solid #f0d48a;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink);
+  margin: 0;
 }
 
 .agree {
