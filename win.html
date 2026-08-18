@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>お届け先のご登録｜OKL</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="brand">OKL</p>
+    <h1>お届け先のご登録</h1>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div id="loading" class="card center">
+    <p>確認しています…</p>
+  </div>
+
+  <!-- トークンが無効・期限切れ等 -->
+  <div id="errorArea" class="hidden">
+    <div id="errorMsg" class="msg error"></div>
+    <div class="card">
+      <h2>お問い合わせ</h2>
+      <p class="small">お心当たりのない場合や、期限を過ぎてしまった場合は <span id="contactError">事務局</span> までご連絡ください。</p>
+    </div>
+  </div>
+
+  <!-- 登録フォーム -->
+  <div id="formArea" class="hidden">
+
+    <div class="msg done">
+      <span id="winNick"></span> 様、ご当選おめでとうございます。
+    </div>
+
+    <div class="card">
+      <h2>ご当選内容</h2>
+      <dl class="spec">
+        <div><dt>賞品</dt><dd id="winPrize"></dd></div>
+        <div><dt>登録期限</dt><dd><strong id="winDeadline"></strong></dd></div>
+        <div id="shipRow" class="hidden"><dt>発送時期</dt><dd id="winShip"></dd></div>
+      </dl>
+    </div>
+
+    <div class="notice">
+      <strong>ご入力の前にお読みください</strong><br>
+      ・このページは<strong>お客様専用</strong>です。第三者に転送・共有しないでください。<br>
+      ・<strong>一度ご登録いただくと変更できません。</strong>お間違えのないようご確認ください。<br>
+      ・ご登録いただいた情報は賞品の発送のみに使用し、<strong>発送完了から30日以内に削除</strong>します。
+    </div>
+
+    <form id="regForm" class="card" novalidate>
+      <h2>お届け先</h2>
+
+      <div id="formError" class="msg error hidden"></div>
+
+      <div class="field">
+        <label class="q" for="name">お名前<span class="req">必須</span></label>
+        <p class="hint">配送伝票に記載するお名前です。</p>
+        <input type="text" id="name" maxlength="50" autocomplete="name" required>
+      </div>
+
+      <div class="field">
+        <label class="q" for="zip">郵便番号<span class="req">必須</span></label>
+        <p class="hint">半角数字。ハイフンはあってもなくてもかまいません（例：123-4567）。</p>
+        <input type="text" id="zip" maxlength="8" inputmode="numeric" autocomplete="postal-code" required>
+      </div>
+
+      <div class="field">
+        <label class="q" for="addr">ご住所<span class="req">必須</span></label>
+        <p class="hint">都道府県から、建物名・部屋番号まですべてご入力ください。</p>
+        <textarea id="addr" rows="3" maxlength="200" autocomplete="street-address" required></textarea>
+      </div>
+
+      <div class="field">
+        <label class="q" for="tel">電話番号<span class="req">必須</span></label>
+        <p class="hint">配送業者からのご連絡に使用します。半角数字でご入力ください。</p>
+        <input type="tel" id="tel" maxlength="20" inputmode="tel" autocomplete="tel" required>
+      </div>
+
+      <div class="field hidden" id="sizeField">
+        <label class="q" for="size">Tシャツのサイズ<span class="req">必須</span></label>
+        <p class="hint">応募時のご選択を表示しています。変更する場合は選び直してください。</p>
+        <select id="size"><option value="">選択してください</option></select>
+      </div>
+
+      <button type="submit" class="btn" id="submitBtn">この内容で登録する</button>
+      <p class="small center" style="margin-top:12px">登録後の変更はできません。</p>
+    </form>
+  </div>
+
+  <!-- 登録完了 -->
+  <div id="doneArea" class="hidden">
+    <div class="msg done">お届け先のご登録が完了しました。</div>
+    <div class="card">
+      <h2>このあとの流れ</h2>
+      <p id="doneShip">ご登録いただいた住所へ、順次発送いたします。</p>
+      <p class="small">
+        ご登録いただいた氏名・住所・電話番号は、賞品の発送のみに使用し、発送完了から30日以内に削除いたします。<br>
+        くわしくは<a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>をご覧ください。
+      </p>
+      <p class="small">お問い合わせ：<span id="contactDone">事務局</span></p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    主催：OKL<br>
+    本企画はOKLが独自に実施するものであり、YouTubeおよびGoogle LLCとは一切関係ありません。
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="win.js"></script>
+</body>
+</html>
