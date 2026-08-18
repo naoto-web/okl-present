@@ -1,0 +1,273 @@
+/* OKL 視聴者プレゼント企画 応募サイト — 共通スタイル（スマホ優先） */
+
+:root {
+  --bg: #f5f6f8;
+  --card: #ffffff;
+  --ink: #1b1d21;
+  --ink-sub: #5c6068;
+  --line: #dfe2e7;
+  --accent: #0b6cf0;
+  --accent-dark: #084fb0;
+  --danger: #c62828;
+  --ok: #1b7a3d;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 0 0 64px;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP",
+    "Yu Gothic UI", Meiryo, sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ヘッダー */
+header {
+  background: var(--ink);
+  color: #fff;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+header .wrap { display: block; }
+header .brand {
+  font-size: 13px;
+  letter-spacing: .12em;
+  opacity: .7;
+  margin: 0 0 4px;
+}
+header h1 {
+  font-size: 20px;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* カード */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px 16px;
+  margin-bottom: 16px;
+}
+.card h2 {
+  font-size: 17px;
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--ink);
+}
+.card h3 {
+  font-size: 15px;
+  margin: 20px 0 6px;
+}
+.card p { margin: 0 0 12px; }
+.card p:last-child { margin-bottom: 0; }
+
+/* 概要の定義リスト */
+dl.spec { margin: 0; }
+dl.spec div {
+  display: flex;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--line);
+}
+dl.spec div:last-child { border-bottom: none; }
+dl.spec dt {
+  flex: 0 0 84px;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--ink-sub);
+}
+dl.spec dd { margin: 0; flex: 1; }
+
+/* フォーム */
+.field { margin-bottom: 20px; }
+.field > label.q {
+  display: block;
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+.req {
+  display: inline-block;
+  background: var(--danger);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 3px;
+  padding: 1px 6px;
+  margin-left: 6px;
+  vertical-align: 2px;
+}
+.hint {
+  font-size: 13px;
+  color: var(--ink-sub);
+  margin: 4px 0 8px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px; /* 16px未満だとiOSで拡大される */
+  font-family: inherit;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+
+/* ラジオ・チェック */
+.choices { display: grid; gap: 8px; }
+.choice {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+  background: #fff;
+}
+.choice:has(input:checked) {
+  border-color: var(--accent);
+  background: #eef5ff;
+}
+.choice input { margin: 4px 0 0; flex: 0 0 auto; width: 18px; height: 18px; }
+.choice .label { font-weight: 700; }
+.choice .sub { font-size: 13px; color: var(--ink-sub); font-weight: 400; }
+
+.agree {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  background: #fff8e6;
+  border: 1px solid #f0d48a;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+.agree input { margin: 4px 0 0; width: 18px; height: 18px; flex: 0 0 auto; }
+
+/* honeypot：人間には見えない。botだけが埋める */
+.hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ボタン */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  font-size: 17px;
+  font-weight: 700;
+  font-family: inherit;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.btn:hover:not(:disabled) { background: var(--accent-dark); }
+.btn:disabled { background: #a9b0ba; cursor: not-allowed; }
+
+/* メッセージ */
+.msg {
+  padding: 14px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+.msg.error { background: #fdecea; border: 1px solid #f5c2be; color: var(--danger); }
+.msg.info  { background: #eef5ff; border: 1px solid #bcd7fb; color: var(--accent-dark); }
+.msg.done  { background: #e8f6ec; border: 1px solid #b4dfc2; color: var(--ok); }
+
+.notice {
+  font-size: 14px;
+  color: var(--ink-sub);
+  background: #fff;
+  border-left: 4px solid var(--accent);
+  padding: 12px 14px;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 16px;
+}
+
+/* 規約・PPの本文 */
+.doc { font-size: 15px; }
+.doc h2 { font-size: 16px; margin-top: 28px; }
+.doc h2:first-of-type { margin-top: 0; }
+.doc ol, .doc ul { padding-left: 1.4em; margin: 0 0 12px; }
+.doc li { margin-bottom: 6px; }
+.doc table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 12px;
+  font-size: 14px;
+}
+.doc th, .doc td {
+  border: 1px solid var(--line);
+  padding: 8px;
+  text-align: left;
+  vertical-align: top;
+}
+.doc th { background: #f0f2f5; white-space: nowrap; }
+.table-scroll { overflow-x: auto; }
+
+/* リンク・フッター */
+a { color: var(--accent); }
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--ink-sub);
+  padding: 24px 16px 0;
+  line-height: 1.9;
+}
+
+.center { text-align: center; }
+.hidden { display: none !important; }
+.small { font-size: 13px; color: var(--ink-sub); }
+
+/* プレビュー中の警告バー（GAS_URL を設定すると自動的に出なくなる） */
+#previewBar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #b71c1c;
+  color: #fff;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.6;
+  padding: 8px 12px;
+}
