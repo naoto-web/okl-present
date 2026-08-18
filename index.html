@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>視聴者プレゼント企画 応募ページ｜OKL</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="brand">OKL</p>
+    <h1 id="pageTitle">視聴者プレゼント企画</h1>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 読み込み中 -->
+  <div id="loading" class="card center">
+    <p>読み込んでいます…</p>
+  </div>
+
+  <!-- 受付期間外 -->
+  <div id="closedArea" class="hidden">
+    <div id="closedMsg" class="msg info"></div>
+    <div class="card">
+      <h2>お問い合わせ</h2>
+      <p class="small">本企画に関するお問い合わせは <span id="contactClosed">事務局</span> までお願いいたします。</p>
+    </div>
+  </div>
+
+  <!-- 応募フォーム -->
+  <div id="formArea" class="hidden">
+
+    <div class="card">
+      <h2>企画の概要</h2>
+      <dl class="spec">
+        <div><dt>賞品</dt><dd>
+          タオル／Tシャツ／競輪選手カード<br>
+          <span class="small">【賞品の具体的な内容・商品名をここに記載】</span>
+        </dd></div>
+        <div><dt>当選人数</dt><dd><span id="specWinners">20</span>名様</dd></div>
+        <div><dt>応募期間</dt><dd><span id="specPeriod"></span></dd></div>
+        <div><dt>応募資格</dt><dd>満20歳以上・日本国内にお住まいの方</dd></div>
+        <div><dt>当選発表</dt><dd>当選者ご本人へのメール通知をもって代えさせていただきます</dd></div>
+        <div><dt>発送時期</dt><dd id="specShip">当選者確定後、順次発送いたします</dd></div>
+      </dl>
+    </div>
+
+    <div class="notice">
+      <strong>ご応募にあたって</strong><br>
+      この時点では<strong>ご住所・お名前はお聞きしません</strong>。ご当選された方にのみ、メールでお届け先をお伺いします。<br>
+      応募は<strong>お一人様1回限り</strong>です。<br>
+      <strong>受付の確認メールは送信されません。</strong>送信完了の画面表示をもって受付完了となります。
+    </div>
+
+    <form id="applyForm" class="card" novalidate>
+      <h2>応募フォーム</h2>
+
+      <div id="formError" class="msg error hidden"></div>
+
+      <div class="field">
+        <label class="q" for="email">メールアドレス<span class="req">必須</span></label>
+        <p class="hint">当選のご連絡はこのアドレスに送ります。お間違えのないようご注意ください。</p>
+        <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required>
+      </div>
+
+      <div class="field">
+        <label class="q" for="email2">メールアドレス（確認）<span class="req">必須</span></label>
+        <p class="hint">確認のため、もう一度ご入力ください。</p>
+        <input type="email" id="email2" name="email2" autocomplete="off" inputmode="email" required>
+      </div>
+
+      <div class="field">
+        <label class="q" for="nickname">ニックネーム<span class="req">必須</span></label>
+        <p class="hint">20文字以内。本名でなくてかまいません。</p>
+        <input type="text" id="nickname" name="nickname" maxlength="20" required>
+      </div>
+
+      <div class="field">
+        <span class="q">ご希望の賞品<span class="req">必須</span></span>
+        <p class="hint">1つだけお選びください。</p>
+        <div class="choices">
+          <label class="choice">
+            <input type="radio" name="prize" value="タオル" required>
+            <span><span class="label">タオル</span><br><span class="sub">【商品の説明】</span></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="prize" value="Tシャツ">
+            <span><span class="label">Tシャツ</span><br><span class="sub">【商品の説明】</span></span>
+          </label>
+          <label class="choice">
+            <input type="radio" name="prize" value="カード">
+            <span><span class="label">競輪選手カード</span><br><span class="sub">【商品の説明】</span></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field hidden" id="sizeField">
+        <label class="q" for="size">Tシャツのサイズ<span class="req">必須</span></label>
+        <select id="size" name="size">
+          <option value="">選択してください</option>
+        </select>
+      </div>
+
+      <!-- bot対策：人間には見えない欄。入力があれば機械とみなす -->
+      <div class="hp" aria-hidden="true">
+        <label for="company">会社名</label>
+        <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label class="agree">
+          <input type="checkbox" id="ageOk" required>
+          <span><strong>私は満20歳以上です</strong><br>
+          <span class="small">20歳未満の方はご応募いただけません。</span></span>
+        </label>
+        <label class="agree">
+          <input type="checkbox" id="agree" required>
+          <span><strong><a href="kiyaku.html" target="_blank" rel="noopener">応募規約</a>と<a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意します</strong></span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn" id="submitBtn">応募する</button>
+      <p class="small center" style="margin-top:12px">送信は1回だけ押してください。</p>
+    </form>
+
+    <div class="links">
+      <a href="kiyaku.html">応募規約</a>
+      <a href="privacy.html">プライバシーポリシー</a>
+    </div>
+  </div>
+
+  <!-- 応募完了 -->
+  <div id="doneArea" class="hidden">
+    <div class="msg done">ご応募を受け付けました。ありがとうございました。</div>
+    <div class="card">
+      <h2>このあとの流れ</h2>
+      <p>応募期間の終了後に抽選を行い、<strong>ご当選された方にのみ</strong>ご登録のメールアドレス宛に当選通知をお送りします。</p>
+      <h3>ご注意ください</h3>
+      <ul>
+        <li><strong>受付の確認メールは送信されません。</strong>この画面が表示されていれば受付は完了しています。</li>
+        <li>落選された方へのご連絡はいたしません。</li>
+        <li>当選通知が迷惑メールフォルダに入る場合があります。あわせてご確認ください。</li>
+        <li>当選通知から<span id="doneDeadline">7</span>日以内にお届け先をご登録いただけない場合、当選は無効となります。</li>
+      </ul>
+      <p class="small">お問い合わせ：<span id="contactDone">事務局</span></p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    主催：OKL<br>
+    本企画はOKLが独自に実施するものであり、YouTubeおよびGoogle LLCとは一切関係ありません。
+  </div>
+</footer>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
